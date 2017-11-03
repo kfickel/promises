@@ -7,9 +7,6 @@ var fs = require('fs');
 var request = require('request');
 var crypto = require('crypto');
 var Promise = require('bluebird');
-var nodeStyle = require('./callbackReview.js');
-var pluckFirstLineFromFileAsync = Promise.promisify(nodeStyle.pluckFirstLineFromFile)
-var getStatusCodeAsync = Promise.promisify(nodeStyle.getStatusCode)
 
 // (1) Asyncronous HTTP request
 var getGitHubProfile = function(user, callback) {
@@ -66,13 +63,13 @@ var readFileAndMakeItFunnyAsync = function(filePath) {
         return reject(err);
       } 
 
-      var funnyFile = file.split('\n').map(function(line){
+      var funnyFile = file.split('\n').map(function(line) {
         return line + 'lol';
       }).join('\n');
 
       resolve(funnyFile);
-    })
-  })
+    });
+  });
 }; // TODO
 
 // Export these functions so we can test them and reuse them in later exercises

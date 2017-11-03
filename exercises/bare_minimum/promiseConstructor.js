@@ -16,7 +16,7 @@ var pluckFirstLineFromFileAsync = function(filePath) {
         reject(err); 
       } else {
         var firstLine = contents.split('\n')[0];
-        resolve(firstLine)
+        resolve(firstLine);
       }
     });
   });
@@ -31,8 +31,8 @@ var getStatusCodeAsync = function(url) {
       } else {
         resolve(res.statusCode);
       }
-    })
-  })
+    });
+  });
 };
 
 // Export these functions so we can test them and reuse them in later exercises
